@@ -1,3 +1,6 @@
+For this queueing network, the different arrival rates for each relay station
+are:
+
 \begin{align*}
   \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
   \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
@@ -19,3 +22,94 @@ and the end-to-end error probability is then
 \begin{align*}
   p_{e,e2e} &= 1 - p_{s,e2e} = 1 - \prod_{k=1}^{r+1} (1 - p_{e,k})
 \end{align*}
+
+
+
+Then, at the first relay station, the packet arrival rate is
+
+\begin{align*}
+  \lambda_1 &= \lambda + \lambda_0 = \lambda + \lambda_1 p_{e,e2e} \\
+  \lambda_1 (1-p_{e,e2e}) &= \lambda  \\
+  \lambda_1 &= \dfrac{\lambda}{1-p_{e,e2e}} \\
+  \lambda_1 &= \dfrac{\lambda}{1 - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))} \\
+  \lambda_1 &= \dfrac{\lambda}{\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}
+\end{align*}
+
+Since there is no blocking of erroneous packets made in this queueing network,
+the arrival rate at every relay station and at the mobile station will be equal
+to $\lambda_i = \lambda_1$. The offered load at each relay station $i$ and at
+the mobile station is then given by equations \ref{eq:01_1} and \ref{eq:01_2}
+respectively.
+
+\begin{equation}
+  \rho_i^{AF} = \lambda_i \overline{x}_{AF} = \dfrac{\lambda_1}{\mu_{AF}} = \dfrac{\lambda}{\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}
+  \label{eq:01_1}
+\end{equation}
+
+\begin{equation}
+  \rho^{MS} = \lambda_{r+1} \overline{x}_{MS} = \dfrac{\lambda_1}{\mu_{MS}} = \dfrac{\lambda}{\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}
+  \label{eq:01_2}
+\end{equation}
+
+With these pieces of information, we can derive the average number of packets
+in each queue, the average number of packets being serviced, and then, from
+Little's theorem, the average queueing delay.
+
+The average number of packets in a queue of a M/M/1 system is
+$N_q = \dfrac{\rho^2}{1-\rho}$, hence the average number of packets in the queues
+of a relay station $i$ and in the mobile station is given by equations
+\ref{eq:01_3} and \ref{eq:01_4} respectively.
+
+\begin{equation}
+  N_{i,q}^{AF} = \dfrac{\lambda^2}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  \label{eq:01_3}
+\end{equation}
+
+\begin{equation}
+  N_q^{MS} = \dfrac{\lambda^2}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  \label{eq:01_4}
+\end{equation}
+
+The average number of packets under service at a relay station $i$ and at the
+mobile station is given by equations \ref{eq:01_1} and \ref{eq:01_2} respectively.
+
+From Little's theorem, the average queueing delay is $W = \dfrac{N_q}{\lambda}$.
+Equations \ref{eq:01_5} and \ref{eq:01_6} give the average queueing delay at a
+relay station $i$ and at the mobile station respectively.
+
+\begin{equation}
+  W_i^{AF} = \dfrac{\lambda}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  \label{eq:01_5}
+\end{equation}
+
+\begin{equation}
+  W^{MS} = \dfrac{\lambda}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  \label{eq:01_6}
+\end{equation}
+
+
+The average delay at a relay station $i$ and at the mobile station is then the
+sum of the waiting time and the service time at that station:
+
+\begin{equation}
+  T_i^{AF} = W_i^{AF} + \dfrac{1}{\mu_{AF}} =
+  \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}{\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) -\lambda}
+  \label{eq:01_7}
+\end{equation}
+
+\begin{equation}
+  T^{MS} = W^{MS} + \dfrac{1}{\mu_{MS}} =
+  \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}{\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) -\lambda}
+  \label{eq:01_8}
+\end{equation}
+
+
+The average end-to-end delay $T$ is then the sum of all waiting and serving times,
+over $r$ relay stations and at the mobile station.
+
+
+\begin{equation}
+  T = r \cdot T_i^{AF} + T^{MS} =
+  \dfrac{r \cdot \prod\limits_{k=1}^{r+1} (1 - p_{e,k})}{\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) -\lambda}
+  + \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k})}{\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) -\lambda}
+\end{equation}
