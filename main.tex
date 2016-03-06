@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt,oneside,onecolumn]{article} % Document type
+
+\usepackage[left=1.0in, right=1.0in, top=1.0in, bottom=1.0in]{geometry}
+
+\usepackage{amsmath,amssymb}   % Contains mathematical symbols
+\usepackage[ansinew]{inputenc} % Input encoding, identical to Windows 1252
+\usepackage[english]{babel}    % Language
+\usepackage[square,numbers]{natbib}     %Nice numbered citations
+\bibliographystyle{plainnat}            %Sorted bibliography
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usetikzlibrary{arrows,automata}
+\usepackage{subfigure}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{rotating}
+
+
+\title{VT16 $-$ EP2200 \\
+  Project I - Error Control in Relay Networks \\
+  Alexandros Filotheou \\
+  871108-5590, alefil@kth.se }
+
+\date{}
+
+\begin{document}
+	\maketitle
+
+  \part*{Theoretic Analysis}
+
+    \section{AF relaying with end-to-end ARQ}
+    \input{./sections/01.af_e2e.tex}
+
+    \section{DF relaying with end-to-end ARQ}
+    \input{./sections/02.df_e2e.tex}
+
+    \section{DF relaying with hop-by-hop ARQ}
+    \input{./sections/03.df_hbh.tex}
+
+
+  \part*{Numerical Evaluation}
+
+\end{document}

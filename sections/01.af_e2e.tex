@@ -1,0 +1,21 @@
+\begin{align*}
+  \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
+  \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
+  & \cdots \\
+  \lambda_{r+1} &= \lambda_r (1-p_{e,r}) = \lambda_1 \prod_{k=1}^{r} (1 - p_{e,k})
+  \text{, and, hence} \\
+  \lambda_0 &= \lambda_1 \prod_{k=1}^{r+1} (1 - p_{e,k})
+\end{align*}
+
+The success rate, or end-to-end probability of successful receipt of packets at
+the mobile station is hence
+
+\begin{align*}
+  p_{s,e2e} &= \prod_{k=1}^{r+1} (1 - p_{e,k})
+\end{align*}
+
+and the end-to-end error probability is then
+
+\begin{align*}
+  p_{e,e2e} &= 1 - p_{s,e2e} = 1 - \prod_{k=1}^{r+1} (1 - p_{e,k})
+\end{align*}
