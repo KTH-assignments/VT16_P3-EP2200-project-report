@@ -57,3 +57,72 @@ by equations \ref{eq:02_2} and \ref{eq:02_3}.
   \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{DF}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)}
   \label{eq:02_3}
 \end{equation}
+
+
+
+
+
+
+
+
+
+
+
+With these pieces of information, we can derive the average number of packets
+in each queue, the average number of packets being serviced, and then, from
+Little's theorem, the average queueing delay.
+
+The average number of packets in a queue of a M/M/1 system is
+$N_q = \dfrac{\rho^2}{1-\rho}$, hence the average number of packets in the queues
+of a relay station $i$ and in the mobile station is given by equations
+\ref{eq:02_4} and \ref{eq:02_5} respectively.
+
+\begin{equation}
+  N_{i,q}^{DF} = \dfrac{(\rho_i^{DF})^2}{1 - \rho_i^{DF}}
+  \label{eq:02_4}
+\end{equation}
+
+\begin{equation}
+  N_q^{MS} = \dfrac{(\rho^{MS})^2}{1 - \rho^{MS}}
+  \label{eq:02_5}
+\end{equation}
+
+The average number of packets under service at a relay station $i$ and at the
+mobile station is given by equations \ref{eq:02_2} and \ref{eq:02_3} respectively.
+
+From Little's theorem, the average queueing delay is $W = \dfrac{N_q}{\lambda}$.
+Equations \ref{eq:02_6} and \ref{eq:02_7} give the average queueing delay at a
+relay station $i$ and at the mobile station respectively.
+
+\begin{equation}
+  W_i^{AF} =
+  \label{eq:02_6}
+\end{equation}
+
+\begin{equation}
+  W^{MS} =
+  \label{eq:02_7}
+\end{equation}
+
+
+The average delay at a relay station $i$ and at the mobile station is then the
+sum of the waiting time and the service time at that station:
+
+\begin{equation}
+  T_i^{AF} = W_i^{AF} + \dfrac{1}{\mu_{AF}} =
+  \label{eq:02_8}
+\end{equation}
+
+\begin{equation}
+  T^{MS} = W^{MS} + \dfrac{1}{\mu_{MS}} =
+  \label{eq:02_9}
+\end{equation}
+
+
+The average end-to-end delay $T$ is then the sum of all waiting and serving times,
+over $r$ relay stations and at the mobile station.
+
+
+\begin{equation}
+  T = r \cdot T_i^{AF} + T^{MS} =
+\end{equation}
