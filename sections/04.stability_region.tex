@@ -147,3 +147,48 @@ overall stability of the network.
 
 %-------------------------------------------------------------------------------
 \subsection{DF relaying with hop-by-hop ARQ}
+
+With $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$, the arrival rates at each relay
+station and at the mobile station, given by equations \ref{eq:03_lambda_i}
+and \ref{eq:03_lambda_r_plus_one}, become
+
+\begin{align}
+  \lambda_i = \lambda \cdot 0.9^{-1}
+  \label{eq:04_stability_region_df_hbh_lambda_i}
+\end{align}
+
+\begin{align}
+  \lambda_{r+1} = \lambda \cdot 0.9^{-1}
+  \label{eq:04_stability_region_df_hbh_lambda_r_plus_one}
+\end{align}
+
+Since (a) the entire network is stable when all queues are stable, (b) every
+station is a M/M/1 system, and (c) such a system is considered to be stable
+when $\rho_k = \dfrac{\lambda_k}{\mu_k} < 1$, then, the network is stable if all
+of the following inequalities hold:
+
+\begin{align*}
+  &\lambda \cdot 0.9^{-1} < 1 \\
+  &\lambda \cdot 0.9^{-1} < 2
+\end{align*}
+
+From these conditions  we can see that the most restrictive condition is the
+first one, i.e. if the first one holds, then, inevitably, the second condition
+will be true. Figure \ref{fig:04_stability_region_df_hbh} plots function
+$\lambda_{max}(r) = 0.9$ for $1 \leq r \leq 8$. The stability
+region is defined as the region where $\lambda_{} < \lambda_{max}(r)$.
+
+\begin{figure}[H]\centering
+  \input{./figures/stability_region_df_hbh.tex}
+  \caption{Function $\lambda_{max}(r) = 0.9$ for $1 \leq r \leq 8$.
+    The stability region is the area under the curve.}
+  \label{fig:04_stability_region_df_hbh}
+\end{figure}
+
+As $r \to \infty$, the stability region is not affected.
+
+This is reasonable, since, as $r$ increases, the number of relay stations
+increase, and each one of them carries a probability of erroneous transmission
+with it, but each erroneous packet doesn't have to be retransmitted from the
+base station, as in the previous two networks, but from the station where the
+error was made.
