@@ -98,14 +98,14 @@ relay station $i$ and at the mobile station respectively.
 
 \begin{align}
   W_i^{DF} &= \dfrac{N_{i,q}^{DF}}{\lambda_i} =
-    \dfrac{\dfrac{\lambda^2}{\mu_{DF}(1 - p_{e,i})\Big(\mu_{DF}(1 - p_{e,i}) - \lambda\Big)}} {\dfrac{\lambda}{1-p_{e,i}}} \\
+    \dfrac{\dfrac{\lambda^2}{\mu_{DF}(1 - p_{e,i})\Big(\mu_{DF}(1 - p_{e,i}) - \lambda\Big)}} {\dfrac{\lambda}{1-p_{e,i}}} \nonumber \\
          ~ &= \dfrac{\lambda}{\mu_{DF}\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)}
   \label{eq:03_8}
 \end{align}
 
 \begin{align}
   W^{MS} &= \dfrac{N_q^{MS}}{\lambda_{r+1}} =
-    \dfrac{\dfrac{\lambda^2}{\mu_{MS}(1 - p_{e,r+1})\Big(\mu_{MS}(1 - p_{e,r+1}) - \lambda\Big)}}{\dfrac{\lambda}{1-p_{e,r+1}}} \\
+    \dfrac{\dfrac{\lambda^2}{\mu_{MS}(1 - p_{e,r+1})\Big(\mu_{MS}(1 - p_{e,r+1}) - \lambda\Big)}}{\dfrac{\lambda}{1-p_{e,r+1}}} \nonumber \\
        ~ &= \dfrac{\lambda}{\mu_{MS}\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)}
   \label{eq:03_9}
 \end{align}
@@ -117,23 +117,24 @@ relay station $i$ and at the mobile station respectively.
 The average delay at a relay station $i$ and at the mobile station is then the
 sum of the waiting time and the service time at that station:
 
-\begin{align}
+\begin{align*}
   T_i^{DF} &= W_i^{DF} + \dfrac{1}{\mu_{DF}} \\
-         ~ &= \dfrac{\lambda}{\mu_{DF}\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)} + \dfrac{1}{\mu_{DF}} = 1 - p_{e,i}
-  \label{eq:03_10}
-\end{align}
+         ~ &= \dfrac{\lambda}{\mu_{DF}\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)} + \dfrac{1}{\mu_{DF}} \\
+         ~ &= \dfrac{1-p_{e,i}}{\mu_{DF} (1 - p_{e,i}) - \lambda}
+\end{align*}
 
-\begin{align}
+\begin{align*}
   T^{MS} &= W^{MS} + \dfrac{1}{\mu_{MS}} \\
-       ~ &= \dfrac{\lambda}{\mu_{MS}\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)} + \dfrac{1}{\mu_{MS}} = 1 - p_{e,r+1}
-  \label{eq:03_11}
-\end{align}
+       ~ &= \dfrac{\lambda}{\mu_{MS}\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)} + \dfrac{1}{\mu_{MS}} \\
+       ~ &= \dfrac{1 - p_{e,r+1}}{\mu_{MS}(1 - p_{e,r+1}) - \lambda}
+\end{align*}
 
 
 The average end-to-end delay $T$ is then the sum of all waiting and serving times,
 over $r$ relay stations and at the mobile station.
 
 \begin{align*}
-  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{DF} = 1 - p_{e,r+1} + \sum\limits_{i=1}^r (1 - p_{e,i})
+  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{DF} \\
+  ~ &= \dfrac{1 - p_{e,r+1}}{\mu_{MS}(1 - p_{e,r+1}) - \lambda} + \sum\limits_{i=1}^r \dfrac{1-p_{e,i}}{\mu_{DF} (1 - p_{e,i}) - \lambda}
 \end{align*}
 
