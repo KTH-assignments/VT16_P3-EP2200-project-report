@@ -1,10 +1,9 @@
-For this queueing network, the different arrival rates for each relay station
-are:
+For this queueing network, the different arrival rates for each station are:
 
 \begin{align*}
   \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
   \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
-  & \cdots \\
+  & \dots \\
   \lambda_{r+1} &= \lambda_r (1-p_{e,r}) = \lambda_1 \prod_{k=1}^{r} (1 - p_{e,k})
   \text{, and, hence} \\
   \lambda_0 &= \lambda_1 \prod_{k=1}^{r+1} (1 - p_{e,k})
@@ -61,12 +60,12 @@ of a relay station $i$ and in the mobile station is given by equations
 \ref{eq:01_3} and \ref{eq:01_4} respectively.
 
 \begin{equation}
-  N_{i,q}^{AF} = \dfrac{\lambda^2}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  N_{i,q}^{AF} = \dfrac{\lambda^2}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_3}
 \end{equation}
 
 \begin{equation}
-  N_q^{MS} = \dfrac{\lambda^2}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  N_q^{MS} = \dfrac{\lambda^2}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_4}
 \end{equation}
 
@@ -78,12 +77,12 @@ Equations \ref{eq:01_5} and \ref{eq:01_6} give the average queueing delay at a
 relay station $i$ and at the mobile station respectively.
 
 \begin{equation}
-  W_i^{AF} = \dfrac{\lambda}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  W_i^{AF} = \dfrac{\lambda}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_5}
 \end{equation}
 
 \begin{equation}
-  W^{MS} = \dfrac{\lambda}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Bigg(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Bigg)}
+  W^{MS} = \dfrac{\lambda}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_6}
 \end{equation}
 

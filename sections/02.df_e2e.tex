@@ -1,0 +1,59 @@
+For this queueing network, the different arrival rates for each station are:
+
+\begin{equation}
+ \left.
+  \begin{array}{ll}
+  \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
+  \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
+  & \dots \\
+  \lambda_{r+1} &= \lambda_r (1-p_{e,r}) = \lambda_1 \prod\limits_{k=1}^{r} (1 - p_{e,k})
+  \end{array}
+\right\} \label{eq:02_1}
+\end{equation} \\
+
+From the structure of the queueing network:
+
+\begin{align*}
+  \lambda_1 &= \lambda + \lambda_1 p_{e,1} + \lambda_2 p_{e,2} + \lambda_3 p_{e,3}
+  + \dots
+  + \lambda_{r+1} p_{e,r+1} \\
+  ~ &= \lambda + \lambda_1 p_{e,1} + \lambda_1 (1 - p_{e,1}) p_{e,2}
+  + \lambda_1 (1 - p_{e,1})(1 - p_{e,2}) p_{e,3}
+  + \dots
+  + \lambda_1 \prod\limits_{i=1}^r (1 - p_{e,i}) p_{e,r+1} \\
+  ~ &= \lambda + \lambda_1 \sum_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)
+\end{align*}
+
+Hence
+
+\begin{equation*}
+  \lambda_1 = \dfrac{\lambda}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
+\end{equation*}
+
+And from the set of equations \ref{eq:02_1}, we obtain the packet arrival rates
+$\lambda_i$ and $\lambda_{r+1}$ at every relay station $i$ and at the mobile
+station:
+
+\begin{align*}
+  \lambda_i = \dfrac{\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
+\end{align*}
+
+\begin{align*}
+  \lambda_{r+1} = \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
+\end{align*}
+
+
+The offered load at each relay station i and at the mobile station is then given
+by equations \ref{eq:02_2} and \ref{eq:02_3}.
+
+\begin{equation}
+  \rho_i^{DF} = \lambda_i \overline{x}_{DF} = \dfrac{\lambda_1}{\mu_{DF}} =
+  \dfrac{\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}{\mu_{DF}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)}
+  \label{eq:02_2}
+\end{equation}
+
+\begin{equation}
+  \rho^{MS} = \lambda_{r+1} \overline{x}_{MS} = \dfrac{\lambda_1}{\mu_{MS}} =
+  \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{DF}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)}
+  \label{eq:02_3}
+\end{equation}
