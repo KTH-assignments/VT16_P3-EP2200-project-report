@@ -1,0 +1,60 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.133in,
+height=3.26in,
+at={(0.693in,0.44in)},
+scale only axis,
+xmin=1,
+xmax=8,
+xmajorgrids,
+ymin=0.2,
+ymax=1.8,
+ymajorgrids,
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+1	1.62\\
+2	1.458\\
+3	1.3122\\
+4	1.18098\\
+5	1.062882\\
+6	0.9565938\\
+7	0.86093442\\
+8	0.774840978\\
+};
+\addplot [color=mycolor2,solid,forget plot]
+  table[row sep=crcr]{%
+1	0.81\\
+2	0.729\\
+3	0.6561\\
+4	0.59049\\
+5	0.531441\\
+6	0.4782969\\
+7	0.43046721\\
+8	0.387420489\\
+};
+\addplot [color=mycolor3,solid,forget plot]
+  table[row sep=crcr]{%
+1	0.9\\
+2	0.9\\
+3	0.9\\
+4	0.9\\
+5	0.9\\
+6	0.9\\
+7	0.9\\
+8	0.9\\
+};
+\end{axis}
+\end{tikzpicture}%

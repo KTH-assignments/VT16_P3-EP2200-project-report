@@ -192,3 +192,15 @@ increase, and each one of them carries a probability of erroneous transmission
 with it, but each erroneous packet doesn't have to be retransmitted from the
 base station, as in the previous two networks, but from the station where the
 error was made.
+
+Figure \ref{fig:04_stability_regions} illustrates the maximum arrival rate
+per queueing network for $1 \leq r \leq 8$.
+
+\begin{figure}[H]\centering
+  \input{./figures/stability_regions.tex}
+  \caption{The maximum arrival rate for each of the three queueing networks
+    considered here, for $1 \leq r \leq 8$. Colour \texttt{blue} denotes that of
+    AF with end-to-end ARQ, \texttt{red} that of DF with end-to-end ARQ and
+    \texttt{orange} that of DF with hop-by-hop ARQ.}
+  \label{fig:04_stability_regions}
+\end{figure}
