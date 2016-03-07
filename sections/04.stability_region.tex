@@ -17,33 +17,133 @@ when $\rho = \dfrac{\lambda}{\mu} < 1$, then the network is stable if all of the
 following inequalities hold:
 
 \begin{align*}
-  &\lambda\cdot  0.9^{-r-1} < 2 \\
-  &\lambda\cdot  0.9^{-r} < 2 \\
-  &\lambda\cdot  0.9^{-r + 1} < 2 \\
+  &\lambda\cdot 0.9^{-r-1} < 2 \\
+  &\lambda\cdot 0.9^{-r} < 2 \\
+  &\lambda\cdot 0.9^{-r + 1} < 2 \\
   & \dots \\
-  &\lambda\cdot  0.9^{-1} < 2
+  &\lambda\cdot 0.9^{-1} < 2
 \end{align*}
 
 or
 
 \begin{align*}
-  &\lambda < 2\cdot  0.9^{r+1}\\
-  &\lambda < 2\cdot   0.9^{r}\\
-  &\lambda < 2\cdot   0.9^{r-1}\\
+  &\lambda < 2\cdot 0.9^{r+1}\\
+  &\lambda < 2\cdot 0.9^{r}\\
+  &\lambda < 2\cdot 0.9^{r-1}\\
   & \dots \\
-  &\lambda < 2\cdot  0.9^{1}
+  &\lambda < 2\cdot 0.9^{1}
 \end{align*}
 
 From these conditions, since $r \geq 1$ and $0.9 < 1$, we can see that the most
 restrictive condition is the first one, i.e. if the first one holds, then,
 inevitably, all the following conditions will be true. Figure
 \ref{fig:04_stability_region_af_e2e} plots function
-$\lambda_{max}(r) = 2 \cdot 0.9^{r+1}$ for $1 \leq r \leq 8$. The stability region
-is defined as the region where $\lambda < \lambda_{max}(r)$.
+$\lambda_{max}(r) = 2 \cdot 0.9^{r+1}$ for $1 \leq r \leq 8$. The stability
+region is defined as the region where $\lambda_{} < \lambda_{max}(r)$.
 
 \begin{figure}[H]\centering
   \input{./figures/stability_region_af_e2e.tex}
-  \caption{Function $\lambda_{max}(r) = 2\cdot  0.9^{r+1}$ for $1 \leq r \leq 8$.
+  \caption{Function $\lambda_{max}(r) = 2\cdot 0.9^{r+1}$ for $1 \leq r \leq 8$.
     The stability region is the area under the curve.}
   \label{fig:04_stability_region_af_e2e}
 \end{figure}
+
+As $r \to \infty$, the stability region gets smaller and smaller in size, until
+it is obliterated, since $\lambda_{max}(r) \to 0$ as $r \to \infty$.
+
+This is reasonable, since, as $r$ increases, the number of relay stations
+increase, and each one of them carries a probability of erroneous transmission
+with it. Each erroneous packet has to be retransmitted from the base station,
+and the end-to-end error probability goes to $1$ as $r \to \infty$:
+
+\begin{align*}
+  \displaystyle \lim_{r \to \infty} p_{e,e2e} = \lim_{r \to \infty} (1 - \prod\limits_{k=1}^{r+1} 0.9) = 1 - 0 = 1
+\end{align*}
+
+
+%-------------------------------------------------------------------------------
+\subsection{DF relaying with end-to-end ARQ}
+
+With $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$, the arrival rates at each relay
+station and at the mobile station, given by equations \ref{eq:02_lambda_i}
+and \ref{eq:02_lambda_r_plus_one}, become
+
+\begin{align}
+  \lambda_i = \dfrac{\lambda}{1 - \sum\limits_{k=0}^r \Big(0.1 \prod\limits_{i=1}^k (1 - 0.1)\Big)} \prod\limits_{k=1}^{i-1} (1 - 0.1)
+  \label{eq:04_stability_region_df_e2e_lambda_i}
+\end{align}
+
+\begin{align}
+  \lambda_{r+1} = \dfrac{\lambda}{1 - \sum\limits_{k=0}^r \Big(0.1 \prod\limits_{i=1}^k (1 - 0.1)\Big)} \prod\limits_{k=1}^{r} (1 - 0.1)
+  \label{eq:04_stability_region_df_e2e_lambda_r_plus_one}
+\end{align}
+
+The first part of the right-hand side of the above 2 equations does not change
+over each station, and is equal to
+
+\begin{align*}
+  \dfrac{\lambda}{1 - \sum\limits_{k=0}^r \Big(0.1 \prod\limits_{i=1}^k (1 - 0.1)\Big)} =
+  \dfrac{\lambda}{1 - 0.1 \sum\limits_{k=0}^r 0.9^k} =
+  \dfrac{\lambda}{1 - 0.1 \dfrac{1 - 0.9^{r+1}}{1- 0.9}} =
+  \lambda \cdot 0.9^{-r-1}
+\end{align*}
+
+Hence, equations \ref{eq:04_stability_region_df_e2e_lambda_i} and
+\ref{eq:04_stability_region_df_e2e_lambda_r_plus_one} become
+
+\begin{align*}
+  \lambda_i = \lambda \cdot 0.9^{-r-1} \prod\limits_{k=1}^{i-1} (1 - 0.1) = \lambda \cdot 0.9^{-r-1} \cdot 0.9^{i-1} = \lambda \cdot 0.9^{i-r-2}
+\end{align*}
+
+\begin{align*}
+  \lambda_{r+1} = \lambda \cdot 0.9^{-r-1} \prod\limits_{k=1}^{r} (1 - 0.1) = \lambda \cdot 0.9^{-r-1} \cdot 0.9^r = \lambda \cdot 0.9^{-1}
+\end{align*}
+
+Since (a) the entire network is stable when all queues are stable, (b) every
+station is a M/M/1 system, and (c) such a system is considered to be stable
+when $\rho_k = \dfrac{\lambda_k}{\mu_k} < 1$, then, the network is stable if all
+of the following inequalities hold:
+
+\begin{align*}
+  \lambda_i &< \mu_{DF} \\
+  \lambda_{r+1} &< \mu_{MS} \\
+\end{align*}
+
+or
+
+\begin{align*}
+  \lambda &< 0.9^{r+1} \\
+  \lambda &< 0.9^{r} \\
+  \lambda &< 0.9^{+r-1} \\
+  & \dots \\
+  \lambda &< 0.9^2 \\
+  \text{and}\\
+  \lambda &< 2 \cdot 0.9
+\end{align*}
+
+From these conditions, since $r \geq 1$, we can see that the most
+restrictive condition is the first one, i.e. if the first one holds, then,
+inevitably, all the following conditions will be true. Figure
+\ref{fig:04_stability_region_df_e2e} plots function
+$\lambda_{max}(r) = 0.9^{r+1}$ for $1 \leq r \leq 8$. The stability
+region is defined as the region where $\lambda_{} < \lambda_{max}(r)$.
+
+\begin{figure}[H]\centering
+  \input{./figures/stability_region_df_e2e.tex}
+  \caption{Function $\lambda_{max}(r) = 0.9^{r+1}$ for $1 \leq r \leq 8$.
+    The stability region is the area under the curve.}
+  \label{fig:04_stability_region_df_e2e}
+\end{figure}
+
+As $r \to \infty$, the stability region gets smaller and smaller in size, until
+it is obliterated, since $\lambda_{max}(r) \to 0$ as $r \to \infty$.
+
+This is reasonable, since, as $r$ increases, the number of relay stations
+increase, and each one of them carries a probability of erroneous transmission
+with it. Each erroneous packet has to be retransmitted from the base station
+and, hence, the load that the first relay station has to serve determines the
+overall stability of the network.
+
+
+%-------------------------------------------------------------------------------
+\subsection{DF relaying with hop-by-hop ARQ}

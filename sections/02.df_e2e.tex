@@ -36,13 +36,15 @@ and from the set of equations \ref{eq:02_1}, we obtain the packet arrival rates
 $\lambda_i$ and $\lambda_{r+1}$ at every relay station $i$ and at the mobile
 station:
 
-\begin{align*}
+\begin{align}
   \lambda_i = \dfrac{\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
-\end{align*}
+  \label{eq:02_lambda_i}
+\end{align}
 
-\begin{align*}
+\begin{align}
   \lambda_{r+1} = \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
-\end{align*}
+  \label{eq:02_lambda_r_plus_one}
+\end{align}
 
 
 % ------------------------------------------------------------------------------
