@@ -4,11 +4,11 @@ For this queueing network, the different arrival rates for each station are:
 
 \begin{equation}
  \left.
-  \begin{array}{ll}
-  \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
-  \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
-  & \dots \\
-  \lambda_{r+1} &= \lambda_r (1-p_{e,r}) = \lambda_1 \prod\limits_{k=1}^{r} (1 - p_{e,k})
+  \begin{array}{rl}
+    \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
+    \lambda_3 &= \lambda_2 (1 - p_{e,2}) = \lambda_1 (1 - p_{e,1}) (1 - p_{e,2}) \\
+    & \dots \\
+    \lambda_{r+1} &= \lambda_r (1-p_{e,r}) = \lambda_1 \prod\limits_{k=1}^{r} (1 - p_{e,k})
   \end{array}
 \right\} \label{eq:02_1}
 \end{equation} \\
@@ -32,7 +32,7 @@ Hence
   \lambda_1 = \dfrac{\lambda}{1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)}
 \end{equation*}
 
-And from the set of equations \ref{eq:02_1}, we obtain the packet arrival rates
+and from the set of equations \ref{eq:02_1}, we obtain the packet arrival rates
 $\lambda_i$ and $\lambda_{r+1}$ at every relay station $i$ and at the mobile
 station:
 
@@ -99,7 +99,7 @@ Hence, the average number of packets at every relay station $i$ and at the
 mobile station are given by equations \ref{eq:02_6} and \ref{eq:02_7}.
 
 \begin{equation}
-  N_i^{DF} = \dfrac{\rho_i^{DF}}{1 - \rho_i^{AF}}
+  N_i^{DF} = \dfrac{\rho_i^{DF}}{1 - \rho_i^{DF}}
   \label{eq:02_6}
 \end{equation}
 
@@ -117,7 +117,7 @@ Equations \ref{eq:02_8} and \ref{eq:02_9} give the average queueing delay at a
 relay station $i$ and at the mobile station respectively.
 
 \begin{equation}
-  W_i^{AF} = \dfrac{N_{i,q}^{DF}}{\lambda_i}
+  W_i^{DF} = \dfrac{N_{i,q}^{DF}}{\lambda_i}
   \label{eq:02_8}
 \end{equation}
 
@@ -134,7 +134,7 @@ The average delay at a relay station $i$ and at the mobile station is then the
 sum of the waiting time and the service time at that station:
 
 \begin{equation}
-  T_i^{AF} = W_i^{AF} + \dfrac{1}{\mu_{DF}}
+  T_i^{DF} = W_i^{DF} + \dfrac{1}{\mu_{DF}}
   \label{eq:02_10}
 \end{equation}
 

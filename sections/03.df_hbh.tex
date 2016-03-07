@@ -1,0 +1,139 @@
+\subsection{Packet arrival rate at each DF and at the MS}
+
+For this queueing network, the arrival rate at the first relay station is
+$$\lambda_1 = \lambda + \lambda_1 p_{e,1} \Leftrightarrow \lambda_1 = \dfrac{\lambda}{1 - p_{e,1}}$$
+
+From the structure of the queueing network, the arrival at the subsequent relay
+stations rate will be the sum of the error-free arrivals from its previous
+station and the erroneous packets that were processed at that specific station
+
+\begin{equation}
+ \left.
+  \begin{array}{rl}
+    \lambda_2 &= \lambda_2 p_{e,2} + (1 - p_{e,1}) \lambda_1 \Leftrightarrow
+    \lambda_2 (1 - p_{e,2}) = (1 - p_{e,1}) \lambda_1 \\
+    \lambda_3 &= \lambda_3 p_{e,3} + (1 - p_{e,2}) \lambda_2 \Leftrightarrow
+    \lambda_3 (1 - p_{e,3}) = (1 - p_{e,2}) \lambda_2 \\
+    & \dots \\
+    \lambda_{r+1} &= \lambda_r p_{e,r} + (1 - p_{e,r}) \lambda_r \Leftrightarrow
+    \lambda_{r+1} (1 - p_{e,r+1}) = (1 - p_{e,r}) \lambda_r \\
+  \end{array}
+\right\} \label{eq:03_1}
+\end{equation} \\
+
+From this set of equations we observe that
+$$\lambda_1 (1-p_{e,1}) = \lambda_2 (1-p_{e,2}) = \lambda_3 (1-p_{e,3})
+= \dots = \lambda_{r+1} (1 - p_{e,r+1})$$
+
+Hence the arrival rates at each relay station $i$ and at the mobile station are
+
+\begin{align*}
+  \lambda_i = \dfrac{\lambda}{1-p_{e,i}}
+\end{align*}
+
+\begin{align*}
+  \lambda_{r+1} = \dfrac{\lambda}{1-p_{e,r+1}}
+\end{align*}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Average number of packets}
+
+The offered load at each relay station i and at the mobile station is then given
+by equations \ref{eq:03_2} and \ref{eq:03_3}.
+
+\begin{equation}
+  \rho_i^{DF} = \lambda_i \overline{x}_i = \dfrac{\lambda}{\mu_{DF} (1 - p_{e,i})}
+  \label{eq:03_2}
+\end{equation}
+
+\begin{equation}
+  \rho^{MS} = \lambda_{r+1} \overline{x}_{r+1} = \dfrac{\lambda}{\mu_{MS} (1 - p_{e,r+1})}
+  \label{eq:03_3}
+\end{equation}
+
+
+With these pieces of information, we can derive the average number of packets
+in each queue, the average number of packets being serviced, and then, from
+Little's theorem, the average queueing delay.
+
+The average number of packets in a queue of a M/M/1 system is
+$N_q = \dfrac{\rho^2}{1-\rho}$, hence the average number of packets in the queues
+of a relay station $i$ and in the mobile station is given by equations
+\ref{eq:03_4} and \ref{eq:03_5} respectively.
+
+\begin{equation}
+  N_{i,q}^{DF} = \dfrac{(\rho_i^{DF})^2}{1 - \rho_i^{DF}} = \dfrac{\lambda^2}{\mu_{DF}(1 - p_{e,i})\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)}
+  \label{eq:03_4}
+\end{equation}
+
+\begin{equation}
+  N_q^{MS} = \dfrac{(\rho^{MS})^2}{1 - \rho^{MS}} = \dfrac{\lambda^2}{\mu_{MS}(1 - p_{e,r+1})\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)}
+  \label{eq:03_5}
+\end{equation}
+
+The average number of packets under service at a relay station $i$ and at the
+mobile station is given by equations \ref{eq:03_2} and \ref{eq:03_3} respectively.
+
+Hence, the average number of packets at every relay station $i$ and at the
+mobile station are given by equations \ref{eq:02_6} and \ref{eq:02_7}.
+
+\begin{equation}
+  N_i^{DF} = \dfrac{\rho_i^{DF}}{1 - \rho_i^{DF}} = \dfrac{\lambda}{\mu_{DF}(1 - p_{e,i}) - \lambda}
+  \label{eq:03_6}
+\end{equation}
+
+\begin{equation}
+  N^{MS} =  \dfrac{\rho^{MS}}{1 - \rho^{MS}} = \dfrac{\lambda}{\mu_{MS}(1 - p_{e,r+1}) - \lambda}
+  \label{eq:03_7}
+\end{equation}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Average queueing delay}
+
+From Little's theorem, the average queueing delay is $W = \dfrac{N_q}{\lambda}$.
+Equations \ref{eq:03_8} and \ref{eq:03_9} give the average queueing delay at a
+relay station $i$ and at the mobile station respectively.
+
+\begin{align}
+  W_i^{DF} &= \dfrac{N_{i,q}^{DF}}{\lambda_i} =
+    \dfrac{\dfrac{\lambda^2}{\mu_{DF}(1 - p_{e,i})\Big(\mu_{DF}(1 - p_{e,i}) - \lambda\Big)}} {\dfrac{\lambda}{1-p_{e,i}}} \\
+         ~ &= \dfrac{\lambda}{\mu_{DF}\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)}
+  \label{eq:03_8}
+\end{align}
+
+\begin{align}
+  W^{MS} &= \dfrac{N_q^{MS}}{\lambda_{r+1}} =
+    \dfrac{\dfrac{\lambda^2}{\mu_{MS}(1 - p_{e,r+1})\Big(\mu_{MS}(1 - p_{e,r+1}) - \lambda\Big)}}{\dfrac{\lambda}{1-p_{e,r+1}}} \\
+       ~ &= \dfrac{\lambda}{\mu_{MS}\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)}
+  \label{eq:03_9}
+\end{align}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Average end-to-end delay}
+
+The average delay at a relay station $i$ and at the mobile station is then the
+sum of the waiting time and the service time at that station:
+
+\begin{align}
+  T_i^{DF} &= W_i^{DF} + \dfrac{1}{\mu_{DF}} \\
+         ~ &= \dfrac{\lambda}{\mu_{DF}\Big(\mu_{DF}(1 - p_{e,i})- \lambda\Big)} + \dfrac{1}{\mu_{DF}} = 1 - p_{e,i}
+  \label{eq:03_10}
+\end{align}
+
+\begin{align}
+  T^{MS} &= W^{MS} + \dfrac{1}{\mu_{MS}} \\
+       ~ &= \dfrac{\lambda}{\mu_{MS}\Big(\mu_{MS}(1 - p_{e,r+1})- \lambda\Big)} + \dfrac{1}{\mu_{MS}} = 1 - p_{e,r+1}
+  \label{eq:03_11}
+\end{align}
+
+
+The average end-to-end delay $T$ is then the sum of all waiting and serving times,
+over $r$ relay stations and at the mobile station.
+
+\begin{align*}
+  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{DF} = 1 - p_{e,r+1} + \sum\limits_{i=1}^r (1 - p_{e,i})
+\end{align*}
+
