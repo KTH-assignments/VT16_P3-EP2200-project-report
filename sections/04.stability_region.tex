@@ -1,47 +1,25 @@
 \subsection{AF relaying with end-to-end ARQ}
 
 Given that $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$ and $\mu_{AF} = \mu_{MS} = 2$,
-the arrival rates at each relay station and at the mobile station are:
+the arrival rates at each relay station $i$ and at the mobile station are:
 
 \begin{align*}
-  \lambda_1 &= \dfrac{\lambda}{(1-0.1)^{r+1}} = \lambda\ 0.9^{-r-1} \\
-  \lambda_2 &= \lambda_1 (1-0.1) = \lambda\ 0.9^{-r} \\
-  \lambda_3 &= \lambda_2 (1-0.1) = \lambda\ 0.9^{-r + 1} \\
-  & \dots \\
-  \lambda_{r+1} &= \lambda\ 0.9^{-1}
+  \lambda_i = \lambda_{MS} = \lambda_1 &= \dfrac{\lambda}{(1-0.1)^{r+1}} = \lambda\ 0.9^{-r-1} \\
 \end{align*}
 
 Since (a) the entire network is stable when all queues are stable, (b) every
 station is a M/M/1 system, and (c) such a system is considered to be stable
-when $\rho = \dfrac{\lambda}{\mu} < 1$, then the network is stable if all of the
-following inequalities hold:
+when $\rho_i = \dfrac{\lambda_i}{\mu_i} < 1$, then the network is stable if
 
 \begin{align*}
-  &\lambda\cdot 0.9^{-r-1} < 2 \\
-  &\lambda\cdot 0.9^{-r} < 2 \\
-  &\lambda\cdot 0.9^{-r + 1} < 2 \\
-  & \dots \\
-  &\lambda\cdot 0.9^{-1} < 2
+  \lambda\cdot 0.9^{-r-1} < 2 \Leftrightarrow \lambda < 2\cdot 0.9^{r+1}
 \end{align*}
 
-or
-
-\begin{align*}
-  &\lambda < 2\cdot 0.9^{r+1}\\
-  &\lambda < 2\cdot 0.9^{r}\\
-  &\lambda < 2\cdot 0.9^{r-1}\\
-  & \dots \\
-  &\lambda < 2\cdot 0.9^{1}
-\end{align*}
-
-From these conditions, since $r \geq 1$ and $0.9 < 1$, we can see that the most
-restrictive condition is the first one, i.e. if the first one holds, then,
-inevitably, all the following conditions will be true. Figure
-\ref{fig:04_stability_region_af_e2e} plots function
+Figure \ref{fig:04_stability_region_af_e2e} plots function
 $\lambda_{max}(r) = 2 \cdot 0.9^{r+1}$ for $1 \leq r \leq 8$. The stability
 region is defined as the region where $\lambda_{} < \lambda_{max}(r)$.
 
-\begin{figure}\centering
+\begin{figure}[H]\centering
   \input{./figures/stability_region_af_e2e.tex}
   \caption{Function $\lambda_{max}(r) = 2\cdot 0.9^{r+1}$ for $1 \leq r \leq 8$.
     The stability region is the area under the curve.}

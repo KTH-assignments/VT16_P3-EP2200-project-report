@@ -61,7 +61,7 @@ by equations \ref{eq:02_2} and \ref{eq:02_3}.
 
 \begin{equation}
   \rho^{MS} = \lambda_{r+1} \overline{x}_{MS} = \dfrac{\lambda_1}{\mu_{MS}} =
-  \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{DF}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)}
+  \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{MS}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)}
   \label{eq:02_3}
 \end{equation}
 
@@ -101,12 +101,14 @@ Hence, the average number of packets at every relay station $i$ and at the
 mobile station are given by equations \ref{eq:02_6} and \ref{eq:02_7}.
 
 \begin{equation}
-  N_i^{DF} = \dfrac{\rho_i^{DF}}{1 - \rho_i^{DF}}
+  N_i^{DF} = \dfrac{\rho_i^{DF}}{1 - \rho_i^{DF}} =
+    \dfrac{\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}{\mu_{DF}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)-\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}
   \label{eq:02_6}
 \end{equation}
 
 \begin{equation}
-  N^{MS} =  \dfrac{\rho^{MS}}{1 - \rho^{MS}}
+  N^{MS} =  \dfrac{\rho^{MS}}{1 - \rho^{MS}} =
+    \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{MS}\Bigg(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Bigg)-\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}
   \label{eq:02_7}
 \end{equation}
 
@@ -119,12 +121,14 @@ Equations \ref{eq:02_8} and \ref{eq:02_9} give the average queueing delay at a
 relay station $i$ and at the mobile station respectively.
 
 \begin{equation}
-  W_i^{DF} = \dfrac{N_{i,q}^{DF}}{\lambda_i}
+  W_i^{DF} = \dfrac{N_{i,q}^{DF}}{\lambda_i} =
+  \dfrac{\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})}{\mu_{DF}\Bigg(\mu_{DF}\Big(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Big)-\lambda \prod\limits_{k=1}^{i-1} (1 - p_{e,k})\Bigg)}
   \label{eq:02_8}
 \end{equation}
 
 \begin{equation}
-  W^{MS} = \dfrac{N_q^{MS}}{\lambda_{r+1}}
+  W^{MS} = \dfrac{N_q^{MS}}{\lambda_{r+1}} =
+  \dfrac{\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})}{\mu_{MS}\Bigg(\mu_{MS}\Big(1 - \sum\limits_{k=0}^r \Big(p_{e,k+1} \prod\limits_{i=1}^k (1 - p_{e,i})\Big)\Big)-\lambda \prod\limits_{k=1}^{r} (1 - p_{e,k})\Bigg)}
   \label{eq:02_9}
 \end{equation}
 
@@ -150,5 +154,6 @@ The average end-to-end delay $T$ is then the sum of all waiting and serving time
 over $r$ relay stations and at the mobile station.
 
 \begin{align*}
-  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{DF}= \dfrac{N^{MS} + \sum\limits_{i=1}^r N_i^{DF}}{\lambda}
+  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{DF}= \dfrac{N^{MS} + \sum\limits_{i=1}^r N_i^{DF}}{\lambda} \\
+    &= \dfrac{1}{(1-p_{e,r+1})\mu_{MS} - \lambda} + \sum\limits_{i=1}^r \dfrac{1}{\mu_{DF} (1-p_{e,i})^{r+2-i} - \lambda}
 \end{align*}
