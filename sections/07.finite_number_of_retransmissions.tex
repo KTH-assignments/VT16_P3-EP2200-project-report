@@ -30,11 +30,64 @@ The number of error-free packets received at the mobile station (including it)
 is
 \begin{align*}
   \lambda_0 &= (1 - p_{e,e2e}) \lambda_1 - p_{d,e2e} \lambda_1 \\
-  \dfrac{\lambda_0}{\lambda_1} &= 1 - p_{e,e2e} - p_{d,e2e} \\
+  \dfrac{\lambda_0}{\lambda_1} &= 1 - p_{e,e2e} - p_{d,e2e} =
+  \prod_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod_{k=1}^{r+1} (1 - p_{e,k}))^R\\
 \end{align*}
 
 and from equation \ref{eq:07_lambda_1}
 
 \begin{align*}
-  \dfrac{\lambda_0}{\lambda} &= \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} \\
+  \dfrac{\lambda_0}{\lambda} &= \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} =
+  \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
+        {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}\\
+\end{align*}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Stability region}
+
+In order for this system to be stable the following should hold, with
+$\lambda_i = \lambda_{r+1} = \lambda_1$:
+
+\begin{align*}
+  \dfrac{\lambda_i}{\mu_{AF}} &< 1 \\
+  \dfrac{\lambda_{r+1}}{\mu_{MS}} &< 1
+\end{align*}
+
+Hence, due to $\mu_{MS} = \mu_{AF}$:
+
+\begin{align*}
+  \lambda &< \mu_{MS} (1 - p_{e,e2e} + p_{d,e2e}) \\
+          &= \mu_{MS}\Big(\prod_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod_{k=1}^{r+1} (1 - p_{e,k}))^R\Big)
+\end{align*}
+
+This stability region is larger than when there is no retransmission limit, as
+was the case prior to this. This is reasonable, since, now, packets that need to
+be retransmitted more than this upper limit are not allowed to continue their
+life-cycle in the system.
+
+
+% ------------------------------------------------------------------------------
+\subsection{Throughput}
+
+From the previous section:
+
+\begin{align*}
+  \lambda_0 &= \lambda \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} =
+  \lambda\ \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
+        {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R} \\
+\end{align*}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Average end-to-end delay}
+
+With similar reasoning to the first part of the theoretic analysis, the average
+end-to-end delay is
+
+\begin{align*}
+  T &= \dfrac{1}{\mu_{MS}(1 - p_{e,e2e} + p_{d,e2e}) - \lambda} +
+    \sum\limits_{i=1}^r \dfrac{1}{\mu_{AF}(1 - p_{e,e2e} + p_{d,e2e}) - \lambda} \\
+    &= \dfrac{1}{\mu_{MS}\Big(\prod\limits_{k=1}^{r+1}(1-p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1}(1-p_{e,k}))^R \Big) - \lambda} \\
+    &+ \sum\limits_{i=1}^r \dfrac{1}{\mu_{AF}\Big(\prod\limits_{k=1}^{r+1}(1-p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1}(1-p_{e,k}))^R \Big) - \lambda}
 \end{align*}
