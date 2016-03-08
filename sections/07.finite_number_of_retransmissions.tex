@@ -1,0 +1,40 @@
+\subsection{Packet drop probability}
+
+The probability that a packet needs to be retransmitted is
+
+\begin{align*}
+  p_{e,e2e} &= 1 - \prod_{k=1}^{r+1} (1 - p_{e,k})
+\end{align*}
+
+The probability that this exact packet will need to be retransmitted for the
+$i^{th}$ time is independent of the $i-1$ number of times it was retransmitted
+in the past. Hence, if $R$ is the number of maximum allowed transmission
+attempts, the packet drop probability is
+
+\begin{align*}
+  p_{d,e2e} &= p_{d,e2e}^R = (1 - \prod_{k=1}^{r+1} (1 - p_{e,k}))^R
+\end{align*}
+
+
+% ------------------------------------------------------------------------------
+\subsection{Packet loss ratio}
+
+From the structure of the network:
+
+\begin{align}
+  \lambda_1 &= \lambda + \lambda_1 \cdot p_{e,e2e} - \lambda_1 \cdot p_{d,e2e} \nonumber \\
+  \lambda_1 &= \dfrac{\lambda}{1 - p_{e,e2e} + p_{d,e2e}} \label{eq:07_lambda_1}
+\end{align}
+
+The number of error-free packets received at the mobile station (including it)
+is
+\begin{align*}
+  \lambda_0 &= (1 - p_{e,e2e}) \lambda_1 - p_{d,e2e} \lambda_1 \\
+  \dfrac{\lambda_0}{\lambda_1} &= 1 - p_{e,e2e} - p_{d,e2e} \\
+\end{align*}
+
+and from equation \ref{eq:07_lambda_1}
+
+\begin{align*}
+  \dfrac{\lambda_0}{\lambda} &= \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} \\
+\end{align*}

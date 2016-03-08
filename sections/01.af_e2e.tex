@@ -1,6 +1,7 @@
 % ------------------------------------------------------------------------------
 \subsection{End-to-end error probability}
-For this queueing network, the different arrival rates for each station are:
+For this queueing network, the different error-free arrival rates for each
+station are:
 
 \begin{align*}
   \lambda_2 &= \lambda_1 (1 - p_{e,1}) \\
@@ -11,7 +12,7 @@ For this queueing network, the different arrival rates for each station are:
   \lambda_0 &= \lambda_1 \prod_{k=1}^{r+1} (1 - p_{e,k})
 \end{align*}
 
-The success rate, or end-to-end probability of successful receipt of packets at
+The success rate, or end-to-end probability of successful reception of packets at
 the mobile station is hence
 
 \begin{align*}
@@ -31,7 +32,7 @@ and the end-to-end error probability is then
 Then, at the first relay station, the packet arrival rate is
 
 \begin{align*}
-  \lambda_1 &= \lambda + \lambda_0 = \lambda + \lambda_1 p_{e,e2e} \\
+  \lambda_1 &= \lambda + \lambda_1 p_{e,e2e} \\
   \lambda_1 (1-p_{e,e2e}) &= \lambda  \\
   \lambda_1 &= \dfrac{\lambda}{1-p_{e,e2e}} \\
   \lambda_1 &= \dfrac{\lambda}{1 - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))} \\
