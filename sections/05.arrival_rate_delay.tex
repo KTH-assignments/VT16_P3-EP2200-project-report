@@ -1,0 +1,52 @@
+\subsection{AF relaying with end-to-end ARQ}
+Given that $p_{e,i} = 0.1$, $i = \{1,2 \dots r+1\}$, $r=4$ and
+$\mu_{AF} = \mu_{MS} = 2$, the average end-to-end delay is
+
+\begin{align}
+  T = \dfrac{5 \cdot 0.9^5}{2 \cdot 0.9^5 - \lambda}
+  \label{eq:05_T_af_e2e}
+\end{align}
+
+In order for the network to be stable,
+$0 \leq \lambda \leq 2 \cdot 0.9^5 = 1.181$, for $r=4$. Figure
+\ref{fig:05_arrival_rate_af_e2e} illustrates how the end-to-end delay changes
+in relation to the arrival rate $\lambda$.
+
+\begin{figure}\centering
+  \input{./figures/arrival_rate_delay_af_e2e.tex}
+  \caption{The relation between end-to-end delay and the arrival rate in a
+    queueing network with AF relaying and end-to-end ARQ}
+  \label{fig:05_arrival_rate_af_e2e}
+\end{figure}
+
+If we consider $p_{e,i}$ abstractly, equation \ref{eq:05_T_af_e2e} can be
+rewritten as
+
+\begin{align*}
+  T = \dfrac{5}{2 - \dfrac{\lambda}{(1-p_{e,i})^5}}
+\end{align*}
+
+
+%-------------------------------------------------------------------------------
+\subsection{DF relaying with hop-by-hop ARQ}
+Given that $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$, $r=4$ and
+$\mu_{MS} = 2\mu_{DF} = 2$, the average end-to-end delay is
+
+\begin{align}
+  T = \dfrac{1}{1.8 - \lambda} + \sum\limits_{i=1}^4 \dfrac{1}{0.9^{6-i} - \lambda}
+  \label{eq:05_T_df_e2e}
+\end{align}
+
+
+In order for the network to be stable,
+$0 \leq \lambda \leq 0.9^5 = 0.5905$, for $r=4$. Figure
+\ref{fig:05_arrival_rate_df_e2e} illustrates how the end-to-end delay changes in
+relation to the arrival rate $\lambda$.
+
+
+\begin{figure}\centering
+  \input{./figures/arrival_rate_delay_df_e2e.tex}
+  \caption{The relation between end-to-end delay and the arrival rate in a
+    queueing network with DF relaying and end-to-end ARQ}
+  \label{fig:05_arrival_rate_df_e2e}
+\end{figure}
