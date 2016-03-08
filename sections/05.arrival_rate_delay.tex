@@ -15,7 +15,7 @@ in relation to the arrival rate $\lambda$.
 \begin{figure}\centering
   \input{./figures/arrival_rate_delay_af_e2e.tex}
   \caption{The relation between end-to-end delay and the arrival rate in a
-    queueing network with AF relaying and end-to-end ARQ}
+    queueing network with AF relaying and end-to-end ARQ with $r=4$.}
   \label{fig:05_arrival_rate_af_e2e}
 \end{figure}
 
@@ -28,7 +28,8 @@ rewritten as
 
 
 %-------------------------------------------------------------------------------
-\subsection{DF relaying with hop-by-hop ARQ}
+\subsection{DF relaying with end-to-end ARQ}
+
 Given that $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$, $r=4$ and
 $\mu_{MS} = 2\mu_{DF} = 2$, the average end-to-end delay is
 
@@ -47,6 +48,44 @@ relation to the arrival rate $\lambda$.
 \begin{figure}\centering
   \input{./figures/arrival_rate_delay_df_e2e.tex}
   \caption{The relation between end-to-end delay and the arrival rate in a
-    queueing network with DF relaying and end-to-end ARQ}
+    queueing network with DF relaying and end-to-end ARQ with $r=4$.}
   \label{fig:05_arrival_rate_df_e2e}
+\end{figure}
+
+
+%-------------------------------------------------------------------------------
+\subsection{DF relaying with hop-by-hop ARQ}
+
+Given that $p_{e,i} = 0.1, i = \{1,2 \dots r+1\}$, $r=4$ and
+$\mu_{MS} = 2\mu_{DF} = 2$, the average end-to-end delay is
+
+\begin{align*}
+  T &= \dfrac{1 - p_{e,r+1}}{\mu_{MS}(1 - p_{e,r+1}) - \lambda} + \sum\limits_{i=1}^r \dfrac{1-p_{e,i}}{\mu_{DF} (1 - p_{e,i}) - \lambda} \\
+  ~ &= \dfrac{0.9}{1.8 - \lambda} + \sum\limits_{i=1}^4 \dfrac{0.9}{0.9 - \lambda} \\
+  ~ &= \dfrac{0.9}{1.8 - \lambda} + \dfrac{3.6}{0.9 - \lambda} \\
+\end{align*}
+
+In order for the network to be stable,
+$0 \leq \lambda \leq 0.9$, for $r=4$. Figure
+\ref{fig:05_arrival_rate_df_hbh} illustrates how the end-to-end delay changes in
+relation to the arrival rate $\lambda$.
+
+\begin{figure}\centering
+  \input{./figures/arrival_rate_delay_df_hbh.tex}
+  \caption{The relation between end-to-end delay and the arrival rate in a
+    queueing network with DF relaying and hop-by-hop ARQ with $r=4$.}
+  \label{fig:05_arrival_rate_df_hbh}
+\end{figure}
+
+
+Figure \ref{fig:05_arrival_rates} shows the relation between the arrival rate
+and the end-to-end delay for all three queueing networks considered.
+
+\begin{figure}\centering
+  \input{./figures/arrival_rate_delays.tex}
+  \caption{The relation between end-to-end delay and the arrival rate in a
+    queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
+    DF relaying and end-to-end ARQ (\texttt{red}) and
+    DF relaying and hop-by-hop ARQ (\texttt{orange}) for $r=4$.}
+  \label{fig:05_arrival_rates}
 \end{figure}
