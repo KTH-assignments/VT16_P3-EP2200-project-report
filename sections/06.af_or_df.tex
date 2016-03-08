@@ -1,0 +1,66 @@
+\subsection{Part I}
+
+Since the arrival rate and the number of stations is fixed, and the probability
+of error varies, in order to select a scheme among the three queueing systems,
+it is reasonable to consider the metric of end-to-end delay as the decisive
+factor. The system that exhibits the least average delay is the one we shall
+choose as the most preferable.
+
+Figure \ref{fig:06_delay_1} shows the relation between the end-to-end delay
+and the probability of error $p_{e,i}$, $i = \{1,2, \dots r+1\}$ for the three
+different queueing networks considered.
+
+\begin{figure}[H]\centering
+  \input{./figures/af_or_df_1.tex}
+  \caption{The relation between end-to-end delay and the probability of error
+    in a queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
+    DF relaying and end-to-end ARQ (\texttt{red}) and
+    DF relaying and hop-by-hop ARQ (\texttt{orange}) for $r=4$.}
+  \label{fig:06_delay_1}
+\end{figure}
+
+What is evident here is that as the probability of error increases, the average
+delay in the AF relaying with hop-by-hop ARQ system increases in a less rapid
+fashion compared to the other two queueing networks. This system can tolerate
+larger probability errors, and hence be more robust, while at the same time
+appear lower end-to-end delay times.
+
+
+% ------------------------------------------------------------------------------
+\subsection{Part II}
+
+Since the arrival rate, the number of stations, and the probability of error is
+fixed, in order to select a scheme among the three queueing systems,
+it is reasonable to consider the metric of end-to-end delay as the decisive
+factor. The system that exhibits the least average delay is the one we shall
+choose as the most preferable.
+
+Figure \ref{fig:06_delay_2} shows the relation between the end-to-end delay
+and the value of $k \in [1,4]$ for the three different queueing networks
+considered.
+
+Consulting figure \ref{fig:06_delay_3}, which shows a magnified portion of this
+relation, it is evident that for $k \in [1, 1.97]$, DF relaying with hop-by-hop
+ARQ exhibits lower average delay times than the other two queueing systems,
+while for $k \in [1.97, 4]$ the lowest average delay times are exhibited by
+the AF relaying with end-to-end ARQ system.
+
+\begin{figure}[H]\centering
+  \input{./figures/af_or_df_2.tex}
+  \caption{The relation between end-to-end delay and $k \in [1,4]$
+    in a queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
+    DF relaying and end-to-end ARQ (\texttt{red}) and
+    DF relaying and hop-by-hop ARQ (\texttt{orange}) for $r=4$.}
+  \label{fig:06_delay_2}
+\end{figure}
+
+\begin{figure}[H]\centering
+  \input{./figures/af_or_df_2_magnified.tex}
+  \caption{The relation between end-to-end delay and $k \in [1,4]$
+    in a queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
+    DF relaying and end-to-end ARQ (\texttt{red}) and
+    DF relaying and hop-by-hop ARQ (\texttt{orange}) for $r=4$,
+    magnified to display the fine details of when the system exhibiting the
+    lowest average delay changes.}
+  \label{fig:06_delay_3}
+\end{figure}
