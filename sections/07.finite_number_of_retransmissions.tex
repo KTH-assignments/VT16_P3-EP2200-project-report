@@ -8,7 +8,7 @@ The probability that a packet needs to be retransmitted is
 
 The probability that this exact packet will need to be retransmitted for the
 $i^{th}$ time is independent of the $i-1$ number of times it was retransmitted
-in the past. Hence, if $R$ is the number of maximum allowed transmission
+before. Hence, if $R$ is the number of maximum allowed transmission
 attempts, the packet drop probability is
 
 \begin{align*}
@@ -39,7 +39,14 @@ and from equation \ref{eq:07_lambda_1}
 \begin{align*}
   \dfrac{\lambda_0}{\lambda} &= \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} =
   \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
-        {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}\\
+        {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
+\end{align*}
+
+Hence the packet loss ratio is
+
+\begin{align*}
+  \dfrac{\lambda - \lambda_0}{\lambda} = 1 - \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
+        {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
 \end{align*}
 
 
@@ -63,17 +70,18 @@ Hence, due to $\mu_{MS} = \mu_{AF}$:
 
 This stability region is larger than when there is no retransmission limit, as
 was the case prior to this. This is reasonable, since, now, packets that need to
-be retransmitted more than this upper limit are not allowed to continue their
-life-cycle in the system.
+be retransmitted more times than this upper limit are not allowed to continue
+their life-cycle in the system. The lower the value of $R$ is, the larger the
+stability region is.
 
 
 % ------------------------------------------------------------------------------
 \subsection{Throughput}
 
-From the previous section:
+From the packet loss ratio section:
 
 \begin{align*}
-  \lambda_0 &= \lambda \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} =
+  \lambda_0 &= \lambda\ \dfrac{1 - p_{e,e2e} - p_{d,e2e}}{1 - p_{e,e2e} + p_{d,e2e}} =
   \lambda\ \dfrac{\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R}
         {\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1} (1 - p_{e,k}))^R} \\
 \end{align*}
@@ -91,3 +99,37 @@ end-to-end delay is
     &= \dfrac{1}{\mu_{MS}\Big(\prod\limits_{k=1}^{r+1}(1-p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1}(1-p_{e,k}))^R \Big) - \lambda} \\
     &+ \sum\limits_{i=1}^r \dfrac{1}{\mu_{AF}\Big(\prod\limits_{k=1}^{r+1}(1-p_{e,k}) + (1 - \prod\limits_{k=1}^{r+1}(1-p_{e,k}))^R \Big) - \lambda}
 \end{align*}
+
+
+Here we observe that the denominators in the expression of the average end-to-end
+delay are increased due the introduction of the retransmission scheme. This
+means that the delay is smaller in size, and, in fact, it is smaller for smaller
+values of $R$.
+
+% ------------------------------------------------------------------------------
+\subsection{Numerical Evaluation}
+
+Figure \ref{fig:07_packet_loss_ratio} shows the packet loss ratio as a function
+of $R \in [3,8]$. The ratio of packets being dropped decreases as the number of
+allowed retransmissions increases.
+
+Figure \ref{fig:07_throughput_delay.tex} illustrates the relation between the
+throughput and the average end-to-end delay for $\lambda = 0.9^5 + (1-0.9^5)^4$.
+As the number of packets successfully delivered and processed by the mobile
+station increases, so does the average time a packet has to wait until it is
+successfully delivered and processed at the mobile station.
+
+\begin{figure}[H]\centering
+  \input{./figures/packet_loss_ratio.tex}
+  \caption{The packet loss ratio for $R \in [3,8]$, $\mu_{AF} = \mu_{MS} = 2$,
+    $p_{e,i} = 0.1$, $r=4$ and $\lambda = 0.5 \lambda_{max}(r)$.}
+  \label{fig:07_packet_loss_ratio}
+\end{figure}
+
+\begin{figure}\centering
+  \input{./figures/throughput_delay.tex}
+  \caption{The relation between the throughput and the average end-to-end delay
+    for $R=4$, $\mu_{AF} = \mu_{MS} = 2$, $p_{e,i} = 0.1$, $r=4$ and
+    $\lambda < \lambda_{max}(r)$.}
+  \label{fig:07_throughput_delay.tex}
+\end{figure}
