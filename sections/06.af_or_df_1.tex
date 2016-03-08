@@ -1,0 +1,23 @@
+Since the arrival rate and the number of stations is fixed, and the probability
+of error varies, in order to select a scheme among the three queueing systems,
+it is reasonable to consider the metric of end-to-end delay as the decisive
+factor.
+
+Figure \ref{fig:06_delay_1} shows the relation between the end-to-end delay
+and the probability of error $p_{e,i}$, $i = \{1,2, \dots r+1\}$ for the three
+different queueing networks considered.
+
+\begin{figure}[H]\centering
+  \input{./figures/af_or_df_1.tex}
+  \caption{The relation between end-to-end delay and the probability of error
+    in a queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
+    DF relaying and end-to-end ARQ (\texttt{red}) and
+    DF relaying and hop-by-hop ARQ (\texttt{orange}) for $r=4$.}
+  \label{fig:06_delay_1}
+\end{figure}
+
+What is evident here is that as the probability of error increases, the average
+delay in the AF relaying with hop-by-hop ARQ system increases in a less rapid
+fashion compared to the other two queueing networks. This system can tolerate
+larger probability errors, and hence be more robust, while at the same time
+appear lower end-to-end delay times.

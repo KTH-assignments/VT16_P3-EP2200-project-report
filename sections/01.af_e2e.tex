@@ -98,17 +98,17 @@ mobile station are given by equations \ref{eq:01_5} and \ref{eq:01_6}.
 % ------------------------------------------------------------------------------
 \subsection{Average queueing delay}
 
-From Little's theorem, the average queueing delay is $W = \dfrac{N_q}{\lambda}$.
+From Little's theorem, the average queueing delay is $W_i = \dfrac{N_{q,i}}{\lambda_i}$.
 Equations \ref{eq:01_7} and \ref{eq:01_8} give the average queueing delay at a
 relay station $i$ and at the mobile station respectively.
 
 \begin{equation}
-  W_i^{AF} = \dfrac{\lambda}{\mu_{AF} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
+  W_i^{AF} = \dfrac{\lambda}{\mu_{AF} \Big(\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_7}
 \end{equation}
 
 \begin{equation}
-  W^{MS} = \dfrac{\lambda}{\mu_{MS} \prod\limits_{k=1}^{r+1} (1 - p_{e,k})\Big(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
+  W^{MS} = \dfrac{\lambda}{\mu_{MS} \Big(\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda\Big)}
   \label{eq:01_8}
 \end{equation}
 
@@ -135,5 +135,7 @@ The average end-to-end delay $T$ is then the sum of all waiting and serving time
 over $r$ relay stations and at the mobile station.
 
 \begin{align*}
-  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{AF} = \dfrac{N^{MS} + \sum\limits_{i=1}^r N_i^{AF}}{\lambda}
+  T &= T^{MS} + \sum\limits_{i=1}^r T_i^{AF} = \dfrac{N^{MS} + \sum\limits_{i=1}^r N_i^{AF}}{\lambda} \\
+  ~ &= \dfrac{1}{\mu_{MS}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda} +
+  \sum\limits_{i=1}^r \dfrac{1}{\mu_{AF}\prod\limits_{k=1}^{r+1} (1 - p_{e,k}) - \lambda}
 \end{align*}

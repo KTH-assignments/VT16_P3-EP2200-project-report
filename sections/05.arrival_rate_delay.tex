@@ -3,7 +3,7 @@ Given that $p_{e,i} = 0.1$, $i = \{1,2 \dots r+1\}$, $r=4$ and
 $\mu_{AF} = \mu_{MS} = 2$, the average end-to-end delay is
 
 \begin{align}
-  T = \dfrac{5 \cdot 0.9^5}{2 \cdot 0.9^5 - \lambda}
+  T = \dfrac{5}{2 \cdot 0.9^5 - \lambda}
   \label{eq:05_T_af_e2e}
 \end{align}
 
@@ -81,7 +81,7 @@ relation to the arrival rate $\lambda$.
 Figure \ref{fig:05_arrival_rates} shows the relation between the arrival rate
 and the end-to-end delay for all three queueing networks considered.
 
-\begin{figure}\centering
+\begin{figure}[H]\centering
   \input{./figures/arrival_rate_delays.tex}
   \caption{The relation between end-to-end delay and the arrival rate in a
     queueing network with AF relaying with end-to-end AQR (\texttt{blue}),
